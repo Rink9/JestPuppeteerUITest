@@ -15,8 +15,7 @@ const register = async(config) => {
     let ids = [21];
     for (let id of ids) {
         const browser = await puppeteer.launch({
-            headless: false,
-            devtools: true
+            headless: false
         });
 
         const page = await browser.newPage();
