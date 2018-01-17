@@ -1,11 +1,12 @@
 const puppeteer = require('puppeteer');
-const config = require('./config.register.js');
 const path = require('path');
+let config = require('./config.register.js');
 
 describe('Lazada Website', () => {
     jest.setTimeout(config.timeout);
 
     it('should register user correclt', () => {
+        config.data.id = 22;
         return register(config);
     });
 
@@ -25,24 +26,19 @@ const register = async(config) => {
             height: 800
         });
 
-        // prepare test data
-        const email = "youshouldverifyemail" + id + "@gmail.com";
-        const name = "Jack Ma" + id;
-        const password = "JackMa123";
-
         // open test target
         await page.goto(config.url);
         
         // fill out the form
         await page.click(config.ids.male);
-        await page.type(config.ids.email, email)
-        await page.type(config.ids.name, name);
-        await page.type(config.ids.password, password);
-        await page.type(config.ids.confirmPassword, password);
+        await page.type(config.ids.email, config.data.email(config.data.id))
+        await page.type(config.ids.name, config.data.name(config.data.id));
+        await page.type(config.ids.password, config.data.password);
+        await page.type(config.ids.confirmPassword, config.data.password);
 
         // save screenshot
         await page.screenshot({
-            path: path.resolve("screenshots") + '/register_result-' + email.substring(0, email.lastIndexOf("@")) + '.png'
+            path: path.resolve("screenshots") + '/register_result-' + config.data.screenshot(config.data.id) + '.png'
         });
 
         // submit the form
