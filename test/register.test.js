@@ -39,10 +39,10 @@ const register = async(config) => {
         await page.type(config.ids.name, name);
         await page.type(config.ids.password, password);
         await page.type(config.ids.confirmPassword, password);
-        console.log(path.resolve("screenshots") + '/register_result-' + email.substring(0, email.lastIndexOf("@")) + '.png');
+        
         // save screenshot
         await page.screenshot({
-            path: '../screenshots/register_result-' + email.substring(0, email.lastIndexOf("@")) + '.png'
+            path: path.resolve("screenshots") + '/register_result-' + email.substring(0, email.lastIndexOf("@")) + '.png'
         });
 
         // submit the form
