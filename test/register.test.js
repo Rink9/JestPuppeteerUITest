@@ -39,14 +39,14 @@ const register = async(config) => {
         await page.type(config.ids.name, name);
         await page.type(config.ids.password, password);
         await page.type(config.ids.confirmPassword, password);
-        
+
         // save screenshot
         await page.screenshot({
             path: path.resolve("screenshots") + '/register_result-' + email.substring(0, email.lastIndexOf("@")) + '.png'
         });
 
         // submit the form
-        //await page.$eval(config.ids.form, form => form.submit());
+        await page.$eval(config.ids.form, form => form.submit());
 
         // You can add evaluation/test logic here
 
