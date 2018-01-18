@@ -1,7 +1,7 @@
 {
-  "name": "lazada-register",
+  "name": "JestPuppeteerUITest",
   "version": "1.0.0",
-  "description": "UI Testcase on register lazada account",
+  "description": "UI Testcase on register account",
   "main": "index.js",
   "scripts": {
     "pretest": "node prepare.js",
