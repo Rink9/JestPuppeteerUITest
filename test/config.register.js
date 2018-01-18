@@ -1,6 +1,6 @@
 module.exports = {
     timeout: 20000,
-    url: "https://www.lazada.co.th/customer/account/create/",
+    url: "https://www.xxxxx.co.th/customer/account/create/",
     ids: {
         form: "#form-account-create",
         male: "#RegistrationForm_gender_0",
